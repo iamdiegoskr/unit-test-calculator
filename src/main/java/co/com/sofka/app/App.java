@@ -11,8 +11,6 @@ import java.io.InputStreamReader;
 
 public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger( App.class );
-
     public static void main( String[] args ) throws IOException {
 
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( System.in ) );
@@ -27,8 +25,8 @@ public class App {
         Long number2 = Long.valueOf( textNumber2 );
 
         BasicCalculator calculator = new BasicCalculator();
-        Long result = calculator.multiplication( number1, number2 );
+        Long result = calculator.division( number1, number2 );
 
-        System.out.println( number1 + " * " + number2 + " = " + result );
+        System.out.println( number1 + " / " + number2 + " = " + result );
     }
 }

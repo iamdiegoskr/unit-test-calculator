@@ -18,10 +18,14 @@ public class BasicCalculator {
     }
 
     public Long multiplication(Long number1, Long number2) {
-        logger.info( "Multiplicando {} - {}", number1, number2 );
+        logger.info( "Multiplicando {} * {}", number1, number2 );
         return number1 * number2;
     }
 
+    public Long division(Long number1, Long number2) throws ArithmeticException {
+        logger.info( "Dividiendo {} / {}", number1, number2 );
+        return number1 / number2;
+    }
 
 
 }

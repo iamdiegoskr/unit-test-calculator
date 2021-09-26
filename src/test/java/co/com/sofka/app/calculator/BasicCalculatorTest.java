@@ -1,5 +1,6 @@
 package co.com.sofka.app.calculator;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -43,15 +44,13 @@ class BasicCalculatorTest {
     @Test
     @DisplayName("Testing subtraction: 10 - 5 = 5")
     public void subtraction() {
-        // Arrange
+
         Long number1 = 10L;
         Long number2 = 5L;
         Long expectedValue = 5L;
 
-        // Act
         Long result = basicCalculator.subtraction(number1, number2);
 
-        // Assert
         assertEquals(expectedValue, result);
     }
 
@@ -73,15 +72,13 @@ class BasicCalculatorTest {
     @Test
     @DisplayName("Testing multiplication: 5 * 5 = 25")
     public void multiplication() {
-        // Arrange
+
         Long number1 = 5L;
         Long number2 = 5L;
         Long expectedValue = 25L;
 
-        // Act
         Long result = basicCalculator.multiplication(number1, number2);
 
-        // Assert
         assertEquals(expectedValue, result);
     }
 
@@ -97,9 +94,47 @@ class BasicCalculatorTest {
     })
     public void severalMultiplications(Long first, Long second, Long expectedResult) {
         assertEquals(expectedResult, basicCalculator.multiplication(first, second),
-                () -> first + " - " + second + " should equal " + expectedResult);
+                () -> first + " * " + second + " should equal " + expectedResult);
     }
 
+    @Test
+    @DisplayName("Testing sum: 6 / 2 = 3")
+    public void division() {
+
+        Long number1 = 6L;
+        Long number2 = 2L;
+        Long expectedValue = 3L;
+
+        Long result = basicCalculator.division(number1, number2);
+
+        assertEquals(expectedValue, result);
+    }
+
+    @Test
+    @DisplayName("Testing sum: 2 / 0 = Exepcion")
+    public void divisionByZero() {
+
+        Long number1 = 2L;
+        Long number2 = 0L;
+
+        Assertions.assertThrows(ArithmeticException.class,()->{
+            Long result = basicCalculator.division(number1, number2);
+        });
+    }
+
+    @DisplayName("Testing different divisions")
+    @ParameterizedTest(name = "{0} / {1} = {2}")
+    @CsvSource({
+            "10,  5,  2",
+            "100,  100,  1",
+            "0,   2,   0",
+            "200,  10, 20",
+            "10,   -2,  -5"
+    })
+    public void severalDivisions(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.division(first, second),
+                () -> first + " / " + second + " should equal " + expectedResult);
+    }
 
 
 
