@@ -17,4 +17,11 @@ public class BasicCalculator {
         return number1 - number2;
     }
 
+    public Long multiplication(Long number1, Long number2) {
+        logger.info( "Multiplicando {} - {}", number1, number2 );
+        return number1 * number2;
+    }
+
+
+
 }
